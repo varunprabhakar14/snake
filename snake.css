@@ -1,0 +1,21 @@
+.board {
+  border: 1px solid black;
+}
+
+.row {
+  float: left;
+}
+
+.square {
+  background-color: gray;
+  height: 30px;
+  width: 30px;
+}
+
+.snake {
+  background-color: green;
+}
+
+.apple {
+  background-color: red;
+}
