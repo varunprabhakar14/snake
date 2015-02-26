@@ -111,7 +111,7 @@
     return display;
   };
 
-//Apple class
+  //Apple class
 
   // var Apple = SG.Apple = function(dim, snake){
   //   this.dim = dim;
