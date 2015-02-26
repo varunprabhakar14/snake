@@ -11,34 +11,60 @@
   var View = SG.View = function ($el) {
     this.dim = 20;
     this.snake = new SG.Snake(this.dim);
-    // this.apple = new SG.Apple(this.dim, this.snake);
-    // this.apple.generate();
     this.board = new SG.Board(this.dim, this.snake);
     this.$el = $el;
+    this.start = false;
+    this.score = 0;
+
+    var $gameOver = $('<h3 class="gameover">Push Spacebar to Start</h3>');
+    $('body').append($gameOver);
+
+    var $gameScore = $('<h1 class="score">Score: ' + this.score + '</h1>');
+    $('body').append($gameScore);
 
     // create board
-    $('body').on("keydown", this.handleKey.bind(this))
+    $('body').on("keydown", this.handleKey.bind(this));
 
-    setInterval(this.step.bind(this), 100)
-    // this.step()
+    this.step()
   }
 
   View.prototype.handleKey = function (event){
-    this.snake.turn(SG.KEYS[event.keyCode]);
-    // console.log(event.keyCode)
-    // this.step()
+    if(event.keyCode === 32) {
+      this.start = !this.start;
+      if(this.start) {
+        this.interval = setInterval(this.step.bind(this), 100)
+
+        $('body').find('.gameover').empty();
+      } else {
+        clearInterval(this.interval)
+
+        $('body').find('.gameover').html("Push Spacebar to Start");
+
+      }
+
+    } else {
+      this.snake.turn(SG.KEYS[event.keyCode]);
+    }
   }
 
   View.prototype.step = function () {
     var movement = this.snake.move();
-    if(movement[0]) {
+    if(movement[0]) { // game is over
+
       this.snake = new SG.Snake(this.dim);
-      // this.apple = new SG.Apple(this.dim, this.snake)
       this.board = new SG.Board(this.dim, this.snake);
+      clearInterval(this.interval)
+      this.start = false;
+      var $gameScore = $('<h1 class="score">Score: 0</h1>');
+      $('body').find('.score').html($gameScore);
     };
 
-    if (movement[1]) {
+    if (movement[1]) { // snake grew
       this.board = new SG.Board(this.dim, this.snake);
+      this.score += 1;
+
+      var $gameScore = $('<h1 class="score">Score: ' + this.score + '</h1>');
+      $('body').find('.score').html($gameScore);
     };
 
     this.render();
@@ -47,7 +73,7 @@
   View.prototype.render = function () {
     this.board.setup();
     this.$el.empty();
-    // this.$el.text(this.board.render())
+
     for (var i = 0; i < this.dim; i++) {
       var $row = $("<div>");
       $row.addClass("row");

@@ -1,3 +1,9 @@
+.board {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .row {
   float: left;
 }
@@ -5,6 +11,7 @@
 .square {
   background-color: black;
   border: 1px solid #035096;
+  /*border: 1px solid black;*/
   height: 20px;
   width: 20px;
 }
@@ -15,4 +22,12 @@
 
 .apple {
   background-color: FFE64D;
+}
+
+.gameover {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  z-index: 999;
 }
