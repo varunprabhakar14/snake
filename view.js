@@ -19,13 +19,14 @@
     // create board
     $('body').on("keydown", this.handleKey.bind(this))
 
-    setInterval(this.step.bind(this), 100)
+    // setInterval(this.step.bind(this), 100)
+    this.step()
   }
 
   View.prototype.handleKey = function (event){
     this.snake.turn(SG.KEYS[event.keyCode]);
-    console.log(event.keyCode)
-    // this.step()
+    // console.log(event.keyCode)
+    this.step()
   }
 
   View.prototype.step = function () {

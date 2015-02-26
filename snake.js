@@ -7,7 +7,7 @@
   var Snake = SG.Snake = function(dim) {
     this.dim = dim;
     this.dir = "N";
-    this.segments = [[dim / 2, dim / 2], [dim / 2 , dim / 2 - 1], [dim / 2, dim / 2 -2]];
+    this.segments = [[dim / 2, dim / 2], [dim / 2 + 1, dim / 2], [dim / 2 + 2, dim / 2]];
     this.apple = [];
   };
 
