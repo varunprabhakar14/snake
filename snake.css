@@ -10,18 +10,18 @@
 
 .square {
   background-color: black;
-  border: 1px solid #035096;
+  border: 1px solid #202020;
   /*border: 1px solid black;*/
   height: 20px;
   width: 20px;
 }
 
 .snake {
-  background-color: #2C75FF;
+  background-color: green;
 }
 
 .apple {
-  background-color: FFE64D;
+  background-color: red;
 }
 
 .gameover {

@@ -42,15 +42,15 @@
   Snake.prototype.endGame = function(newRow, newCol) {
     var returnVal = false;
     if(newRow >= this.dim || newRow < 0) {
-      // alert("You lose");
+      alert("You lose");
       returnVal = true;
     } else if(newCol >= this.dim || newCol < 0){
-      // alert("You lose");
+      alert("You lose");
       returnVal = true;
     } else {
       this.segments.forEach (function(segment){
         if (segment[0] === newRow && segment[1] === newCol) {
-          // alert("You ate yourself");
+          alert("You hit yourself");
           returnVal = true;
         }
       });
