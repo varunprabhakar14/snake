@@ -53,7 +53,10 @@
 
       this.snake = new SG.Snake(this.dim);
       this.board = new SG.Board(this.dim, this.snake);
+
       clearInterval(this.interval)
+      $('body').find('.gameover').html("Push Spacebar to Start");
+
       this.start = false;
       var $gameScore = $('<h1 class="score">Score: 0</h1>');
       $('body').find('.score').html($gameScore);
